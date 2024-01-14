@@ -1,14 +1,18 @@
 const express = require('express'); 
+const path = require('path');
+
 const app = express(); 
+
 const port = 3005; 
 
 
 // public fodel
 app.use('/public', express.static('public'));
 // api
-app.get('/', function(req, res){
-    res.send("Hello World");
-})
+app.get('/', function(req, res) {
+    // Gửi file HTML CSS khi trang có địa chỉ "/" được truy cập
+    res.sendFile(path.join(__dirname, 'public/vanhnguyen.html'));
+  });
 app.get('/cuong', function(req, res){
     res.json({
         name: "Nguyen Manh Cuong",
